@@ -14,7 +14,7 @@ import android.widget.RelativeLayout
 *
 * RelativeLayout lay = (RelativeLayout) context.findViewById(R.id.Workout_Main);                                //find layout
 * View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.workout_muscle_dialog, lay, false);      //inflate dialog
-* Class_CustomDialog dialog = new Class_CustomDialog(context, dialogView, lay);                                 //create dialog
+* CustomDialog dialog = new CustomDialog(context, dialogView, lay);                                 //create dialog
 * dialog.show();                                                                                                //show dialog
 *
 *
@@ -33,7 +33,7 @@ import android.widget.RelativeLayout
 *
 * */
 
-class Class_CustomDialog(val context: Context, val view: View, val layout: RelativeLayout) {
+class CustomDialog(val context: Context, val view: View, val layout: RelativeLayout) {
 
     interface IBackButton {
         fun enable()
