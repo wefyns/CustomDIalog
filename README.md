@@ -1,14 +1,14 @@
 # CustomDIalog
 
 # Шаг 1
-	< allprojects {
+	<allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	} >
 # Шаг 2
-  < dependencies {
+  <dependencies {
   
 	        implementation 'com.github.wefyns:CustomDIalog:1.001'
 		
