@@ -32,13 +32,13 @@
 
 
 # Функции
-  setMargins(dp, dp) - Поставить отступы по бокам (dp)
-  setBackgroundBlackout(float) - Затемнение перед диалогом(тень)
-  setCanceble() - Если вы нажали за границу диалога, он закроется
-  setParentEnabled(bollean, layout) - Если вы не используете затемнение, то можно выключить родительский лайаут
+  -setMargins(dp, dp) - Поставить отступы по бокам (dp)
+  -setBackgroundBlackout(float) - Затемнение перед диалогом(тень)
+  -setCanceble() - Если вы нажали за границу диалога, он закроется
+  -setParentEnabled(bollean, layout) - Если вы не используете затемнение, то можно выключить родительский лайаут
 
-  setCancebleBackButton() - Закрывает диалог при нажатии андройдовской кнопки "назад", как использовать:
-  DOCUMENTATION OF THIS METHOD: https://docs.google.com/document/d/1hREJEilSP6vGttuI4sse6m8rGFQfqPOlYjlvIS_XkHM/edit?usp=sharing
+  -setCancebleBackButton() - Закрывает диалог при нажатии андройдовской кнопки "назад", как использовать:
+  >DOCUMENTATION OF THIS METHOD: https://docs.google.com/document/d/1hREJEilSP6vGttuI4sse6m8rGFQfqPOlYjlvIS_XkHM/edit?usp=sharing
 
-  show() - Показать диалог
-  exit() - Закрыть диалог
+  -show() - Показать диалог
+  -exit() - Закрыть диалог
