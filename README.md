@@ -9,6 +9,7 @@
 	} 
 # Шаг 2
   dependencies {
+  
 	        implementation 'com.github.wefyns:CustomDIalog:1.001'
 		
 	}
