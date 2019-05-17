@@ -1,23 +1,23 @@
 # CustomDIalog
 
 # Шаг 1
-	allprojects {
+	< allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	} 
+	} >
 # Шаг 2
-  dependencies {
+  < dependencies {
   
 	        implementation 'com.github.wefyns:CustomDIalog:1.001'
 		
-	}
+	} >
   
 # Как использовать (Kotlin)?
-  val lay : RelativeLayout = context.findViewById(R.id.Workout_Main)                      //Лайаут, где должен быть выведен диалог
-  val dialogView = LayoutInflater.from(context).inflate(R.layout.YOUR_VIEW, lay, false)   //XML файл самого диалога
-  val dialog = new CustomDialog(context, dialogView, lay);                                //Создание диалога
+  val lay : RelativeLayout = context.findViewById(R.id.Workout_Main)                      //Лайаут, где должен быть выведен диалог<br/>
+  val dialogView = LayoutInflater.from(context).inflate(R.layout.YOUR_VIEW, lay, false)   //XML файл самого диалога<br/>
+  val dialog = new CustomDialog(context, dialogView, lay);                                //Создание диалога<br/>
   
   > Тут вы можете инициализировать любой элемент диалога, например:
   val text : TextView = dialog.view.findViewById(R.id.Element_Id).apply{text = "Привет, я диалог"}
