@@ -16,6 +16,9 @@
 	}
 ```
   
+# Внешний вид
+![alt text](https://github.com/wefyns/CustomDIalog/blob/master/Screenshot.png)
+  
 # Как использовать (Kotlin)?
 ```kotlin
   val lay : RelativeLayout = context.findViewById(R.id.Workout_Main)                      //Лайаут, где должен быть выведен диалог<br/>
