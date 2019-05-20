@@ -18,6 +18,9 @@
   
 # Внешний вид
 ![alt text](https://github.com/wefyns/CustomDIalog/blob/master/Screenshot.png)
+
+# Видео - Инструкция
+[![Video](http://img.youtube.com/vi/JhqyPUTSmdw/0.jpg)](http://www.youtube.com/watch?v=JhqyPUTSmdw "Видео")
   
 # Как использовать (Kotlin)?
 ```kotlin
