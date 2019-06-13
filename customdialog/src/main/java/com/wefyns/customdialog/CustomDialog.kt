@@ -39,7 +39,13 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
         fun enable()
         fun disable()
     }
+
+    interface IExit{
+        fun exit()
+    }
+
     var iBackButton : IBackButton? = null
+    var iExit : IExit? = null
 
     var IS_BLACKOUT: Boolean = false
     var IS_CANCEBLE: Boolean = false
@@ -115,7 +121,12 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
         dialogGroup.visibility = View.VISIBLE
     }
 
+    fun setOnExitListener(iExit: IExit){
+        this.iExit = iExit
+    }
+
     fun exit() {
+        iExit?.exit()
         iBackButton?.enable()
         dialogGroup.visibility = View.INVISIBLE
     }
