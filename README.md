@@ -45,6 +45,7 @@
   - setBackgroundBlackout(float) - Затемнение перед диалогом(тень)
   - setCanceble() - Если вы нажали за границу диалога, он закроется
   - setParentEnabled(bollean, layout) - Если вы не используете затемнение, то можно выключить родительский лайаут
+  - setOnExitListener(CustomDialog.IExit) - слушатель выхода из диалога
 
   - setCancebleBackButton() - Закрывает диалог при нажатии андройдовской кнопки "назад", как использовать:
   > DOCUMENTATION OF THIS METHOD: https://docs.google.com/document/d/1hREJEilSP6vGttuI4sse6m8rGFQfqPOlYjlvIS_XkHM/edit?usp=sharing
