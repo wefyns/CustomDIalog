@@ -11,7 +11,7 @@
 ```
   dependencies {
   
-	        implementation 'com.github.wefyns:CustomDIalog:1.001'
+	        implementation 'com.github.wefyns:CustomDIalog:1.003'
 		
 	}
 ```
@@ -24,9 +24,9 @@
   
 # Как использовать (Kotlin)?
 ```kotlin
-  val lay : RelativeLayout = context.findViewById(R.id.Workout_Main)                      //Лайаут, где должен быть выведен диалог<br/>
-  val dialogView = LayoutInflater.from(context).inflate(R.layout.YOUR_VIEW, lay, false)   //XML файл самого диалога<br/>
-  val dialog = new CustomDialog(context, dialogView, lay);                                //Создание диалога<br/>
+  val lay : RelativeLayout = context.findViewById(R.id.Workout_Main)                      //Лайаут, где должен быть выведен диалог
+  val dialogView = LayoutInflater.from(context).inflate(R.layout.YOUR_VIEW, lay, false)   //XML файл самого диалога
+  val dialog = new CustomDialog(context, dialogView, lay);                                //Создание диалога
   
   > Тут вы можете инициализировать любой элемент диалога, например:
   val text : TextView = dialog.view.findViewById(R.id.Element_Id).apply{text = "Привет, я диалог"}
@@ -41,7 +41,9 @@
 ```
 
 # Функции
-  - setMargins(dp, dp) - Поставить отступы по бокам (dp)
+  - setMargins(dp, dp) - Поставить отступы по бокам (автоконвертирование в dp)
+  - setMargins(dp, dp, dp, dp) - Отступы(слева, сверху, справа, снизу)
+  - align | Top | Center | Bottom - выравнивает ваш диалог (по умолчанию по центру)
   - setBackgroundBlackout(float) - Затемнение перед диалогом(тень)
   - setCanceble() - Если вы нажали за границу диалога, он закроется
   - setParentEnabled(bollean, layout) - Если вы не используете затемнение, то можно выключить родительский лайаут
