@@ -21,6 +21,8 @@ import android.widget.RelativeLayout
 * functions :
 *
 * setMargins(dp, dp) - set margins on the sides
+* setMargins(dp, dp, dp, dp) - left top right bottom
+* align | Top | Center | Bottom - align your dialog in parent (default Center)
 * setBackgroundBlackout(float) - set blackout before dialog
 * setCanceble() - if you click out of dialog view, dialog will be closed
 * setParentEnabled(bollean, layout) - if you don't use blackout, you can disable background lay
@@ -40,33 +42,68 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
         fun disable()
     }
 
-    interface IExit{
+    interface IExit {
         fun exit()
     }
 
-    var iBackButton : IBackButton? = null
-    var iExit : IExit? = null
+    var iBackButton: IBackButton? = null
+    var iExit: IExit? = null
 
-    var IS_BLACKOUT: Boolean = false
-    var IS_CANCEBLE: Boolean = false
-    var dialogGroup: RelativeLayout = RelativeLayout(context)
-    val blackout = View(context)
-    var outView = View(context)
+    private var IS_BLACKOUT: Boolean = false
+    private var IS_CANCEBLE: Boolean = false
+    private var dialogGroup: RelativeLayout = RelativeLayout(context)
+    private val blackout = View(context)
+    private var outView = View(context)
 
     init {
-        dialogGroup.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        dialogGroup.layoutParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT
+        )
         dialogGroup.addView(blackout)
         dialogGroup.addView(outView)
-        dialogGroup.addView(view.apply { setOnClickListener { } })
+        dialogGroup.addView(view.apply {
+            setOnClickListener { }
+            layoutParams = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+            )
+        })
         dialogGroup.visibility = View.INVISIBLE
 
+        alignCenter()
         layout.addView(dialogGroup)
+    }
+
+    fun alignTop() {
+        val layoutParams = view.getLayoutParams() as RelativeLayout.LayoutParams
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
+        view.layoutParams = layoutParams
+    }
+
+    fun alignCenter() {
+        val layoutParams = view.getLayoutParams() as RelativeLayout.LayoutParams
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+        view.layoutParams = layoutParams
+    }
+
+    fun alignBottom() {
+        val layoutParams = view.getLayoutParams() as RelativeLayout.LayoutParams
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
+        view.layoutParams = layoutParams
     }
 
     fun setMargins(left: Int, right: Int) {
         val scale: Float = context.getResources().getDisplayMetrics().density
-        val lp = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        val lp = view.getLayoutParams() as RelativeLayout.LayoutParams
         lp.setMargins(left * scale.toInt(), 0, right * scale.toInt(), 0)
+        view.layoutParams = (lp)
+    }
+
+    fun setMargins(left: Int, top: Int, right: Int, bottom: Int) {
+        val scale: Float = context.getResources().getDisplayMetrics().density
+        val lp = view.getLayoutParams() as RelativeLayout.LayoutParams
+        lp.setMargins(left * scale.toInt(), top * scale.toInt(), right * scale.toInt(), bottom * scale.toInt())
         view.layoutParams = (lp)
     }
 
@@ -75,7 +112,10 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
             blackout.apply {
                 setBackgroundColor(Color.BLACK)
                 this.alpha = alpha
-                layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+                layoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT
+                )
             }
             IS_BLACKOUT = true
         } else {
@@ -86,7 +126,10 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
     fun setCanceble() {
         if (!IS_CANCEBLE) {
             outView.apply {
-                layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+                layoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT
+                )
                 setOnClickListener {
                     exit()
                 }
@@ -115,13 +158,10 @@ class CustomDialog(val context: Context, val view: View, val layout: RelativeLay
     }
 
     fun show() {
-        val layoutParams = view.getLayoutParams() as RelativeLayout.LayoutParams
-        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
-        view.layoutParams = layoutParams
         dialogGroup.visibility = View.VISIBLE
     }
 
-    fun setOnExitListener(iExit: IExit){
+    fun setOnExitListener(iExit: IExit) {
         this.iExit = iExit
     }
 
